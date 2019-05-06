@@ -93,7 +93,7 @@ return lockFund.amount;
 uint256 ap = lockFund.amount.div(lockFund.times);
 // uint256 ap = lockFund.amount / lockFund.times;
 // uint256 t = (block.timestamp - lockFund.startTime + lockFund.lockUnit) / lockFund.lockUnit;
-uint256 t = (block.timestamp.sub(lockFund.startTime).add(lockFund.lockUnit)).div(lockFund.lockUnit);
+uint256 t = (block.timestamp.sub(lockFund.startTime)).div(lockFund.lockUnit);
 //            uint256 t = (block.timestamp - lockFund.startTime) / (60 * 60 * 24) / lockFund.lockUnit;
 if(t < lockFund.times) {
 return lockFund.amount.sub(ap.mul(t));
@@ -109,7 +109,7 @@ if(block.timestamp <= lockFund.startTime) {
 return 0;
 }
 uint256 ap = lockFund.amount / lockFund.times;
-uint256 t = (block.timestamp - lockFund.startTime + lockFund.lockUnit) / lockFund.lockUnit;
+uint256 t = (block.timestamp - lockFund.startTime) / lockFund.lockUnit;
 if(t>= lockFund.times){
 return lockFund.amount;
 }
